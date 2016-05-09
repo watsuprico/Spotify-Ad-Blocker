@@ -1,0 +1,49 @@
+﻿<Window x:Class="SpotifyAdBlocker.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpotifyAdBlocker"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Title="Spotify Ad Blocker | Settings" Height="431.881" Width="409.299" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Closing="Window_Closing" ShowInTaskbar="False" Icon="icon.ico">
+    <Window.Effect>
+        <DropShadowEffect RenderingBias="Quality" Color="#FF00796B" ShadowDepth="0" Opacity="0.75" BlurRadius="10"/>
+    </Window.Effect>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="201.5*"/>
+            <ColumnDefinition Width="201.5*"/>
+        </Grid.ColumnDefinitions>
+        <CheckBox x:Name="chkMinToTray" Content="Close to the system tray" Margin="10,10,10,0" VerticalAlignment="Top" IsChecked="True" FontSize="18.667" HorizontalContentAlignment="Center" ToolTip="When enabled, you would have to close Spotify Ad Blocker by clicking &quot;Shutdown and exit&quot;. (Default: enable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkDarkTheme" Content="Dark theme" Margin="10,39,10,0" VerticalAlignment="Top" IsChecked="True" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, Spotify Ad Blocker will use the dark theme. (Default: enable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkAutoStartProxy" Content="Start proxy with Spotify Ad Blocker" Margin="10,68,10,0" VerticalAlignment="Top" IsChecked="True" HorizontalContentAlignment="Center" FontSize="18.667"  ToolTip="When enabled the proxy will start with Spotify Ad Blocker. (Default: enable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkDismissWarnings" Content="Dismiss warnings" Margin="10,97,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled all warnings will be disabled. (Default: disable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkAutoMinToTray" Content="Close to system tray on startup" Margin="10,126,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, when you start Spotify Ad Blocker it will close to the tray. (Default: enable)" IsChecked="True" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkAutoShowConsole" Content="Show console on startup" Margin="10,155,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, the console will appear when starting Spotify Ad Blocker. (Default: disable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" Cursor="Hand"/>
+
+        <CheckBox x:Name="chkCustomBlock" Content="Custom block message" Margin="10,198,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, the message in &quot;block.html&quot; will be used as the message given to anyone connected to blocked sites. (Default: enable)" Grid.ColumnSpan="2" Height="24" Click="chkMinToTray_Click" IsChecked="True" Cursor="Hand"/>
+        <CheckBox x:Name="chkEnableBlacklist" Content="Black listing" Margin="10,227,4,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, any site located in &quot;blacklist&quot; will be blocked. (Default: enable)" Height="24" IsChecked="True" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <CheckBox x:Name="chkEnableWhitelist" Content="White listing" Margin="4,227,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="18.667" ToolTip="When enabled, any site not located in &quot;whitelist&quot; will be blocked. (Default: enable)" Height="24" Grid.Column="1" FlowDirection="RightToLeft" IsChecked="True" Click="chkMinToTray_Click" Cursor="Hand"/>
+        <Label x:Name="ip" Content="Proxy IP:" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top" Height="28" Width="81" FontSize="16" HorizontalContentAlignment="Center"/>
+        <Label x:Name="port" Content="Proxy port:" Grid.Column="1" HorizontalAlignment="Left" Margin="4,258,0,0" VerticalAlignment="Top" Height="28" Width="92" HorizontalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtIP" HorizontalAlignment="Left" Height="28" Margin="96,258,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="102" FontSize="16" HorizontalContentAlignment="Center" Padding="0" VerticalContentAlignment="Center" PreviewTextInput="txtIP_PreviewTextInput" ToolTip="The IP the proxy listens on, (and what you need to set Spotify to connect to)." Cursor="IBeam"/>
+        <TextBox x:Name="txtPort" HorizontalAlignment="Left" Height="28" Margin="101,258,0,0" TextWrapping="Wrap" Text="80" VerticalAlignment="Top" Width="90" FontSize="16" HorizontalContentAlignment="Center" Padding="0" VerticalContentAlignment="Center" Grid.Column="1" PreviewTextInput="txtPort_PreviewTextInput" ToolTip="The port the proxy listens on, (and what you need to set Spotify to connect to)." Cursor="IBeam"/>
+
+        <Label x:Name="lblStatus" Content="Settings up-to-date." Margin="10,0,10,80" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Focusable="True" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Button x:Name="btnExit" Content="Exit (discards changes)" Style="{StaticResource MaterialDesignFlatButton}" Margin="10,0,10,10" Height="30" IsCancel="True" Click="btnExit_Click" VerticalAlignment="Bottom" FontSize="18.667" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnSaveSettings" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Save" Margin="10,0,4,45" Height="30" FontSize="18.667" Click="btnSaveSettings_Click" ToolTip="" Cursor="Hand" Padding="0" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnExitAndSave" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Save and exit" Margin="4,0,10,45" Height="30" FontSize="18.667" Click="btnExitAndSave_Click" ToolTip="" Cursor="Hand" Padding="0" VerticalAlignment="Bottom" Grid.Column="1"/>
+    </Grid>
+</Window>

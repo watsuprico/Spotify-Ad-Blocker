@@ -1,0 +1,39 @@
+﻿<Window x:Class="SpotifyAdBlocker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpotifyAdBlocker"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Title="Spotify Ad Blocker" Height="151" Width="400" Initialized="Window_Initialized" Closing="Window_Closing" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="icon.ico">
+    <Window.Effect>
+        <DropShadowEffect RenderingBias="Quality" Color="#FF00796B" ShadowDepth="0" Opacity="0.75" BlurRadius="10"/>
+    </Window.Effect>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Button x:Name="btnSettings" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,10,10,0" Height="30" Padding="0" HorizontalAlignment="Right" Width="30" ToolTip="Open settings window." Click="btnSettings_Click" Cursor="Hand">
+            <materialDesign:PackIcon Kind="Settings" />
+        </Button>
+
+
+        <Label x:Name="lblConnection" Content="Proxy not running." Margin="10,10,50,80" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" ToolTip="Set your Spotify proxy settings to this."/>
+
+
+        <Button x:Name="btnRestart" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Restart" Margin="10,0,0,45" Height="30" BorderThickness="3" Padding="0" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="173" Click="btnRestart_Click" RenderTransformOrigin="0.487,0.611" ToolTip="Restart the proxy."/>
+        <Button x:Name="btnShutdown" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Shutdown" Margin="0,0,10,45" Click="btnShutdown_Click" Height="30" BorderThickness="3" Padding="0" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="173" ToolTip="Shutdown the proxy." Cursor="Hand"/>
+
+        <Button x:Name="btnToggleConsole" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Toggle console" Height="30" Margin="10,0,0,10" VerticalAlignment="Bottom" Click="btnToggleConsole_Click" FontSize="16" ToolTip="Show/Hide the proxy console. (Note, if you close the console then it will shutdown Spotify Ad Blocker. Press 'Hide' to dismiss the console)" Cursor="Hand" HorizontalAlignment="Left" Width="173"/>
+        <Button x:Name="btnShutdownAndExit" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" Content="Shutdown and exit" Margin="0,0,10,10" Height="30" BorderThickness="3" Padding="0" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="173" ToolTip="Shutdown the proxy and close Spotify Ad Blocker." Cursor="Hand" Click="btnShutdownAndExit_Click"/>
+    </Grid>
+</Window>
