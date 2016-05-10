@@ -32,7 +32,7 @@
 <h2>
 <a id="what-is-spotify-ad-blocker" class="anchor" href="#what-is-spotify-ad-blocker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is Spotify Ad Blocker?</h2>
 
-<p>Spotify Ad Blocker allows you to run a proxy server that you port Spotify's traffic threw. In doing this, you are able to block some are all sites that Spotify is trying to connect with. By default the whitelist only allows Spotify's image sites, music streaming, and reconnecting to Spotify. The blacklist, (while not necessary when using whitelist), blocks known ad sites Spotify will try to connect to.</p>
+<p>Spotify Ad Blocker allows you to run a proxy server that you port Spotify's traffic through. In doing this, you are able to block some or all sites that Spotify is trying to connect with. By default, the whitelist only allows Spotify's image sites, music streaming, and reconnecting to Spotify. The blacklist, (while not necessary when using whitelist), blocks known ad sites Spotify will try to connect to.</p>
 
 <hr>
 
@@ -107,6 +107,52 @@
 <hr>
 
 <h2>
+<a id="common-errors" class="anchor" href="#common-errors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Common errors</h2>
+
+<h4>
+<a id="why-are-some-ads-playing" class="anchor" href="#why-are-some-ads-playing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why are some ads playing?</h4>
+
+<p>This could be due to the configuration of Spotify Ad Blocker or Spotify has the ads cached</p>
+
+<ul>
+<li>Try enabling only white listing and disabling the custom block message.</li>
+<li>Try clearing the cache folder.</li>
+<li>Try redownloading the <a href="https://github.com/watsuprico/Spotify-Ad-Blocker/blob/master/include/blacklist">blacklist</a> and <a href="https://github.com/watsuprico/Spotify-Ad-Blocker/blob/master/include/whitelist">whitelist</a>
+</li>
+</ul>
+
+<hr>
+
+<h4>
+<a id="spotify-is-not-connecting" class="anchor" href="#spotify-is-not-connecting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spotify is not connecting</h4>
+
+<p>This is usually because Spotify Ad Blocker is not running <em>(and Spotify is set to connect to it)</em> or a misconfiguration in the proxy settings.</p>
+
+<ul>
+<li>Ensure that the proxy settings in Spotify match with those in Spotify Ad Blocker</li>
+<li>Make sure Spotify Ad Blocker and the proxy is running 
+-<em>duh</em>
+If you are going to turn off the proxy or Spotify Ad Blocker, make sure you disable connecting to a proxy in Spotify.</li>
+</ul>
+
+<hr>
+
+<h4>
+<a id="i-changed-settings-about-the-proxy-but-theyre-not-working" class="anchor" href="#i-changed-settings-about-the-proxy-but-theyre-not-working" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>I changed settings about the proxy, but they're not working</h4>
+
+<p>Try restarting the proxy, and if that doesn't work restart Spotify Ad Blocker.</p>
+
+<hr>
+
+<h4>
+<a id="what-is-systemformatexception-an-invaild-ip-address-was-specified" class="anchor" href="#what-is-systemformatexception-an-invaild-ip-address-was-specified" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is "System.FormatException: An invaild IP address was specified"?</h4>
+
+<p>This is when the IP setting is misconfigured.
+Change the proxy ip to 127.0.0.1</p>
+
+<hr>
+
+<h2>
 <a id="known-sites" class="anchor" href="#known-sites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Known sites</h2>
 
 <p>Ad sites:</p>
@@ -143,26 +189,14 @@ apresolve.spotify.com
 <h2>
 <a id="editing-the-white-list-or-the-black-list" class="anchor" href="#editing-the-white-list-or-the-black-list" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Editing the white list or the black list</h2>
 
-<p>All list check to see if that line x is in the current connection and base their actions off that </p>
+<p>The white/black list works by checking one line at a time and seeing if the connection Spotify is attempting contains that line.
+On the white list, if the connection does not contain any of the lines, then it is blocked.
+The black list, however, if the connection contains any of the lines, then it is blocked.</p>
 
-<h5>
-<a id="whitelist" class="anchor" href="#whitelist" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Whitelist</h5>
+<p>For example, if a line in the whitelist was <code>spotify.com</code>, any connection going to <code>spotify.com</code> would be allowed. <em>(Like <code>something.anotherthing.spotify.com/beepbeep/boopboop/thingy</code>)</em>.
+However, if that line was in the blacklist file, it would block any connection going to <code>spotify.com</code>.</p>
 
-<p>If the current connection does <strong>not</strong> contain any of the addresses in the whitelist file, it will block it.
-For example, if I try to connect to google.com, but that is not in a line inside the whitelist file, it will block that connection.
-However, if ".com" is inside the white list, any site with ".com" is not blocked.
-If any connection includes x line in it, the whitelist will not block it.</p>
-
-<hr>
-
-<h5>
-<a id="blacklist" class="anchor" href="#blacklist" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Blacklist</h5>
-
-<p>If the current connection <strong>does</strong> contain any of the addresses in the blacklist file, it will block it. <em>(The opposite of the whitelist)</em>
-<em>(Blacklisted sites are disconnected before checking if they are whitelisted. ((If a blacklisted site is on the whitelist, it'll still get blocked)).)</em> 
-For example, if I try to connect to dropbox.com, but that is a line inside the blacklist file, it will block that connection.
-However, for say, if dropbox.com was not in the blacklist file, then it will not be blocked.
-If any connection includes x line in it, the blacklist will block it.</p>
+<p>They can also work on a wildcard bases. So if the whitelist had a line that contained <code>.com</code>, all <code>.com</code> sites would be allowed.</p>
 
 <hr>
 
