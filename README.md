@@ -1,6 +1,12 @@
 # Spotify Ad Blocker 
+
+## Project currently deprecated.
+Might update in the future, but unlikely.
+Although, I know there **many** changes needed
+
 ###### Version 1.0
 ![image](https://cloud.githubusercontent.com/assets/10912095/15102620/8dc5c3e0-156f-11e6-9662-fd902dd60dce.png)
+
 
 <hr/>
 ## What is Spotify Ad Blocker?
